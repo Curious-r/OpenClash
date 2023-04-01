@@ -1064,6 +1064,13 @@ o.datatype = "port"
 o.rmempty = true
 o.description = translate("Port For Dashboard Login From Public Network")
 
+o = s:taboption("dashboard", Value, "dashboard_forward_location")
+o.title = translate("Location of Reverse Proxy")
+o.datatype = "or(host, string)"
+o.placeholder = "/"
+o.rmempty = true
+o.description = translate("This Option is Required When Using a Specific Location As a Whole Reverse Proxy To Dashboard, Blank is equivalent to filling in /")
+
 o = s:taboption("dashboard", Flag, "dashboard_forward_ssl")
 o.title = translate("Public Dashboard SSL enabled")
 o.default = 0

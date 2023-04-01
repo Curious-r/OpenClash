@@ -239,6 +239,7 @@
 	var state_refresh;
 	var s;
 	var gr;
+	var proxy_path_prefix = status.db_forward_location.endsWith('/') ? status.db_forward_location.slice(0, status.db_forward_location.length - 1) : status.db_forward_location;
 	
 	hid_1.style.display = "none";
 	hid_2.style.display = "none";
@@ -276,7 +277,8 @@
 			{
 			   daip.innerHTML = status.db_foward_domain ? "<b style=color:green>"+status.db_foward_domain+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
 			   dapo.innerHTML = status.db_foward_port ? "<b style=color:green>"+status.db_foward_port+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
-			   luci_protocol = (window.location.protocol == "http:" ? "ws://" : "wss://") + status.db_foward_domain + ":" + status.db_foward_port;
+			   dapo.innerHTML = status.db_foward_location ? "<b style=color:green>"+status.db_foward_location+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
+			   luci_protocol = (window.location.protocol == "http:" ? "ws://" : "wss://") + status.db_foward_domain + ":" + status.db_foward_port + proxy_path_prefix;
 			}
 			else {
 			   daip.innerHTML = status.daip ? "<b style=color:green>"+status.daip+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
@@ -816,7 +818,7 @@
         }
         else if (status.daip && window.location.hostname != status.daip && status.db_foward_domain && status.db_foward_port) {
             var ui_proto = status.db_forward_ssl == 0 ? 'http://' : 'https://';
-            url1='<%="'+ui_proto+status.db_foward_domain+':'+status.db_foward_port+'/ui/yacd/?hostname='+ status.db_foward_domain + '&port=' + status.db_foward_port + '&secret=' + status.dase +'"%>';
+            url1='<%="'+ui_proto+status.db_foward_domain+':'+status.db_foward_port+proxy_path_prefix+'/ui/yacd/?hostname='+ status.db_foward_domain + '&port=' + status.db_foward_port + '&secret=' + status.dase +'"%>';
         }
         else {
             url1='<%="http://'+window.location.hostname+':'+status.cn_port+'/ui/yacd/"%>';
@@ -836,7 +838,7 @@
         }
         else if (status.daip && window.location.hostname != status.daip && status.db_foward_domain && status.db_foward_port) {
             var ui_proto = status.db_forward_ssl == 0 ? 'http://' : 'https://';
-            url2='<%="'+ui_proto+status.db_foward_domain+':'+status.db_foward_port+'/ui/dashboard/#/?host='+ status.db_foward_domain + '&port=' + status.db_foward_port + '&secret=' + status.dase +'"%>';
+            url2='<%="'+ui_proto+status.db_foward_domain+':'+status.db_foward_port+proxy_path_prefix+'/ui/dashboard/#/?host='+ status.db_foward_domain + '&port=' + status.db_foward_port + '&secret=' + status.dase +'"%>';
         }
         else {
             url2='<%="http://'+window.location.hostname+':'+status.cn_port+'/ui/dashboard/"%>';

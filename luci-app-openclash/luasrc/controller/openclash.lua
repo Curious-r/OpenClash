@@ -195,6 +195,10 @@ local function db_foward_port()
 	return uci:get("openclash", "config", "dashboard_forward_port")
 end
 
+local function db_foward_location()
+	return uci:get("openclash", "config", "dashboard_forward_location")
+end
+
 local function db_foward_ssl()
 	return uci:get("openclash", "config", "dashboard_forward_ssl") or 0
 end
@@ -1041,6 +1045,7 @@ function action_status()
 		dase = dase(),
 		db_foward_port = db_foward_port(),
 		db_foward_domain = db_foward_domain(),
+		db_foward_location = db_forward_location(),
 		db_forward_ssl = db_foward_ssl(),
 		web = is_web(),
 		cn_port = cn_port(),
