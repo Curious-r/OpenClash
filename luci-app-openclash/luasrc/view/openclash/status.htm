@@ -278,7 +278,7 @@
 			   daip.innerHTML = status.db_foward_domain ? "<b style=color:green>"+status.db_foward_domain+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
 			   dapo.innerHTML = status.db_foward_port ? "<b style=color:green>"+status.db_foward_port+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
 			   dapo.innerHTML = status.db_foward_location ? "<b style=color:green>"+status.db_foward_location+"</b>" : "<b style=color:red>"+"<%:Not Set%>"+"</b>";
-			   proxy_path_prefix = status.db_forward_location.endsWith('/') ? status.db_forward_location.slice(0, status.db_forward_location.length - 1) : status.db_forward_location;
+			   proxy_path_prefix = status.db_foward_location.endsWith('/') ? status.db_foward_location.slice(0, status.db_foward_location.length - 1) : status.db_foward_location;
 			   luci_protocol = (window.location.protocol == "http:" ? "ws://" : "wss://") + status.db_foward_domain + ":" + status.db_foward_port + proxy_path_prefix;
 			}
 			else {

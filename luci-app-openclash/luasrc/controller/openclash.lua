@@ -1045,7 +1045,7 @@ function action_status()
 		dase = dase(),
 		db_foward_port = db_foward_port(),
 		db_foward_domain = db_foward_domain(),
-		db_foward_location = db_forward_location(),
+		db_foward_location = db_foward_location(),
 		db_forward_ssl = db_foward_ssl(),
 		web = is_web(),
 		cn_port = cn_port(),
